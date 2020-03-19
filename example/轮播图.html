@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轮播图实验</title>
+		<script src="../assets/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+			  margin: 0;
+			  padding: 0;
+			}
+			
+			html,
+			body,
+			#app {
+			  width: 100%;
+			  height: 100%;
+			}
+			
+			#app {
+			  background-color: #c9c9c9;
+			  position: relative;
+			}
+			
+			#app .center {
+			  position: absolute;
+			  background-color: #fff;
+			  left: 50%;
+			  top: 50%;
+			  transform: translate(-50%, -50%);
+			  padding: 10px;
+			}
+			
+			#app .center>img {
+			  display: block;
+			  width: 700px;
+			  height: 458px;
+			}
+			
+			#app .center a {
+			  text-decoration: none;
+			  width: 45px;
+			  height: 100px;
+			  position: absolute;
+			  top: 179px;
+			  vertical-align: middle;
+			  opacity: 0.5;
+			}
+			
+			#app .center a :hover {
+			  opacity: 0.8;
+			}
+			
+			#app .center .left {
+			  left: 15px;
+			  text-align: left;
+			  padding-right: 10px;
+			  border-top-right-radius: 10px;
+			  border-bottom-right-radius: 10px;
+			}
+			
+			#app .center .right {
+			  right: 15px;
+			  text-align: right;
+			  padding-left: 10px;
+			  border-top-left-radius: 10px;
+			  border-bottom-left-radius: 10px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="center">
+				<!--图片-->
+				<img src="imgs[index]" alt="">
+				<!--左箭头-->
+				<a href="JavaScript:void(0)" class="left" @click="prev" v-show="index!=0">
+					<img src="../assets/img/prev.png" alt="" >
+				</a>
+				<!--右箭头-->
+				<a href="JavaScript:void(0)" class="right" @click="next" v-show="index<imgs.length - 1">
+					<img src="../assets/img/next.png" alt="" >
+				</a>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					imgs: [
+						'../assets/img/蓝莓.png',
+						'../assets/img/菠萝.png',
+						'../assets/img/草莓.png',
+						'../assets/img/火龙果.png',
+						'../assets/img/荔枝.png',
+						'../assets/img/葡萄.png',
+						'../assets/img/柿子.png',
+						'../assets/img/桃子.png',
+						'../assets/img/西瓜.png',
+						'../assets/img/香蕉.png',
+					],
+					index:0
+				},
+				methods:{
+					prev:function(){
+						this.index--;
+					},
+					next:function(){
+						this.index++;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
