@@ -13,8 +13,6 @@
 			.biaoti2 {
 				margin-left: 20px;
 				color: white;
-				
-				
 				line-height: 50px;
 				font-size: 18px;
 			}
@@ -170,7 +168,7 @@
 			var app = new Vue({
 				el: '#app',
 				data: {
-					zong:0,
+					zong: 0,
 					// 订单对象
 					dingdan: {
 						name: '',
@@ -191,23 +189,23 @@
 					jiafen: function(index) {
 						this.dingdans[index].number++;
 						this.dingdans[index].price = this.dingdans[index].price * this.dingdans[index].number;
-						var sum=0;
+						var sum = 0;
 						for (let i = 0; i < this.dingdans.length; i++) {
-							sum=parseInt(sum)+parseInt(this.dingdans[i].price);
+							sum = parseInt(sum) + parseInt(this.dingdans[i].price);
 						}
 						this.zong = sum;
 					},
 					// 减去商品数量
 					jianfen: function(index) {
-						var sum=0;
-						if(this.dingdans[index].number<=0){
+						var sum = 0;
+						if (this.dingdans[index].number <= 0) {
 							this.dingdans.splice(index, 1);
-						}else{
+						} else {
 							this.dingdans[index].number--;
 							this.dingdans[index].price = this.dingdans[index].price / this.dingdans[index].number;
 						}
 						for (let i = 0; i < this.dingdans.length; i++) {
-							sum=parseInt(sum)+parseInt(this.dingdans[i].price);
+							sum = parseInt(sum) + parseInt(this.dingdans[i].price);
 						}
 						this.zong = sum;
 					},
@@ -224,28 +222,28 @@
 						if (strDate >= 0 && strDate <= 9) {
 							strDate = "0" + strDate;
 						}
-						var currentdate = year + seperator1 + month + seperator1 + strDate +-+date.getHours() +":"+date.getMinutes();
-						
+						var currentdate = year + seperator1 + month + seperator1 + strDate + - +date.getHours() + ":" + date.getMinutes();
+
 						this.dingdans.push({
 							name: this.name,
 							time: currentdate,
 							price: this.price,
 							number: this.number,
 						})
-						
-						var sum=0;
+
+						var sum = 0;
 						for (let i = 0; i < this.dingdans.length; i++) {
-							sum=parseInt(sum)+parseInt(this.dingdans[i].price);
+							sum = parseInt(sum) + parseInt(this.dingdans[i].price);
 						}
 						this.zong = sum;
 					},
 					// 删除订单对象
 					remove: function(index) {
 						this.dingdans.splice(index, 1)
-						
-						var sum=0;
+
+						var sum = 0;
 						for (let i = 0; i < this.dingdans.length; i++) {
-							sum=parseInt(sum)+parseInt(this.dingdans[i].price);
+							sum = parseInt(sum) + parseInt(this.dingdans[i].price);
 						}
 						this.zong = sum;
 					},
